@@ -1,4 +1,4 @@
-CREATE OR ALTER PROCEDURE validation_completeness_bronze 
+CREATE OR ALTER PROCEDURE bronze.validation_completeness_bronze 
     @table_check VARCHAR(50),
     @record_count INT 
 AS
