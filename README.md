@@ -41,8 +41,8 @@ Detail in : https://drive.google.com/file/d/14XHeJx1sd5xzwTIAg2UX8vlxnmlHdzPy/vi
       - 
   ### **Stored Procedure**
 
-- All stored procedures used for loading data must follow the naming pattern:
-- **`load_<layer>`**.
+  - All stored procedures used for loading data must follow the naming pattern:
+  - **`load_<layer>`**.
 
 
 
