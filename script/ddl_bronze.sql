@@ -14,7 +14,7 @@ CREATE TABLE bronze.erp_cust_az12
 (
 	cid VARCHAR(50),
 	bdate DATETIME2, 
-	male VARCHAR(50),
+	gen VARCHAR(50),
 );
 GO 
 IF OBJECT_ID( 'bronze.erp_loc_a101','U') IS NOT NULL 
