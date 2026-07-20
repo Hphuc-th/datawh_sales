@@ -69,8 +69,8 @@ CREATE TABLE bronze.crm_prd_info
 	prd_nm VARCHAR(50),
 	prd_cost VARCHAR(50),
 	prd_line VARCHAR(50),
-	prd_start_dt DATETIME2,
-	prd_end_dt DATETIME2,
+	prd_start_dt DATE,
+	prd_end_dt DATE,
 );
 GO 
 IF OBJECT_ID( 'bronze.crm_sales_details','U') IS NOT NULL 
