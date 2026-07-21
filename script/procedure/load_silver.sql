@@ -55,8 +55,14 @@ BEGIN
 
     TRUNCATE TABLE silver.erp_px_cat_g1v2;
     
-    INSERT INTO silver.erp_px_cat_g1v2 (id, cat, subcate, maintenance)
-    SELECT * FROM bronze.erp_px_cat_g1v2;
+	INSERT INTO silver.erp_px_cat_g1v2 (id, cat, subcate, maintenance)
+    SELECT 
+		REPLACE(id,'-','_') AS id,
+	    cat,
+		subcate,
+		maintenance
+	FROM bronze.erp_px_cat_g1v2;
+
 
     SET @end_time = SYSDATETIME();
     PRINT 'Completed silver.erp_px_cat_g1v2. Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS VARCHAR(10)) + ' seconds.';
