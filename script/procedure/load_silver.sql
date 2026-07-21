@@ -55,10 +55,8 @@ BEGIN
 
     TRUNCATE TABLE silver.erp_px_cat_g1v2;
     
-	INSERT INTO silver.erp_px_cat_g1v2 (id, cat, subcate, maintenance)
-    SELECT *
-	FROM bronze.erp_px_cat_g1v2;
-
+    INSERT INTO silver.erp_px_cat_g1v2 (id, cat, subcate, maintenance)
+    SELECT * FROM bronze.erp_px_cat_g1v2;
 
     SET @end_time = SYSDATETIME();
     PRINT 'Completed silver.erp_px_cat_g1v2. Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS VARCHAR(10)) + ' seconds.';
@@ -166,7 +164,7 @@ BEGIN
 	SELECT 
 		prd_id,
 		REPLACE(SUBSTRING(prd_key,1,5) ,'-','_') as cat_id,
-		REPLACE(SUBSTRING(prd_key,7,len(prd_key)),'-','_') as prd_key,    
+		REPLACE(SUBSTRING(prd_key,7,len(prd_key)),'-','_') as prd_key,  
 		prd_nm,
 		ISNULL(prd_cost,0) as prd_cost,
 		CASE 
