@@ -165,8 +165,8 @@ BEGIN
     INSERT INTO silver.crm_prd_info (prd_id, cat_id, prd_key, prd_nm, prd_cost,prd_line, prd_start_dt,prd_end_dt)
 	SELECT 
 		prd_id,
-		SUBSTRING(prd_key,1,5) as cat_id,
-		SUBSTRING(prd_key,7,len(prd_key)) as prd_key,  
+		REPLACE(SUBSTRING(prd_key,1,5) ,'-','_') as cat_id,
+		REPLACE(SUBSTRING(prd_key,7,len(prd_key)),'-','_') as prd_key,    
 		prd_nm,
 		ISNULL(prd_cost,0) as prd_cost,
 		CASE 
