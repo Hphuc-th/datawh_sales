@@ -35,14 +35,17 @@ BEGIN
             WHEN TRIM(cid) LIKE 'NAS%' THEN SUBSTRING(TRIM(cid), 4, LEN(TRIM(cid)))
             ELSE TRIM(cid) 
         END AS cid,
-        CAST(bdate AS DATE) AS bdate, 
+       CASE 
+			WHEN CAST(bdate AS DATE) > CAST(GETDATE() AS DATE) THEN NULL
+			ELSE CAST(bdate AS DATE)
+		END AS bdate,
         CASE 
             WHEN gen IS NULL OR TRIM(gen) = '' THEN 'n/a'
             WHEN UPPER(TRIM(gen)) = 'F' THEN 'Female'
             WHEN UPPER(TRIM(gen)) = 'M' THEN 'Male'
             ELSE TRIM(gen)
         END AS gen
-    FROM bronze.erp_cust_az12;
+    FROM bronze.erp_cust_az12 ;
 
     SET @end_time = SYSDATETIME();
     PRINT 'Completed silver.erp_cust_az12. Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS VARCHAR(10)) + ' seconds.';
